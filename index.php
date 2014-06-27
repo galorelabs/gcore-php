@@ -4,8 +4,11 @@
 <?php
 $endpoint = 'http://qa.api.gcore.galoretv.com/';
 $sales_trend = 'merchant/cudsly/sales_trends/cudsly';
-$param = null;
-$URL= $endpoint. $sales_trend ."?" . $param;
+$list_products = 'stores/plainsandprints/products';
+$param = 'page=1';
+$URL= $endpoint. $list_products ."?" . $param;
+
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$URL);
 curl_setopt($ch, CURLOPT_TIMEOUT, 30);
