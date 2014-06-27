@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <body>
-
 <?php
-$URL='http://qa.api.gcore.galoretv.com/merchant/cudsly/sales_trends/cudsly';
-
+$endpoint = 'http://qa.api.gcore.galoretv.com/';
+$sales_trend = 'merchant/cudsly/sales_trends/cudsly';
+$param = null;
+$URL= $endpoint. $sales_trend ."?" . $param;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$URL);
-curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout after 30 seconds
+curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Authorization: <key>'));
-$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Authorization: <KEY>', 'Content-type: application/json'));
 $result=curl_exec ($ch);
 echo $result;
 curl_close ($ch);
 ?>
-
 </body>
 </html>
 
