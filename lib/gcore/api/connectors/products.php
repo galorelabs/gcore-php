@@ -9,9 +9,9 @@ $key = getAuth();
 function getProducts()
 {
     global $URL, $key;
-    $list_products = 'stores/plainsandprints/products?pretty=true';
-    $URL = $URL.'/'.$list_products;
-    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-type'=>'application/json');
+    $list_products = '/stores/plainsandprints/products?pretty=true';
+    $URL = $URL.$list_products;
+    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-Type'=>'application/json');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$URL);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
@@ -27,20 +27,20 @@ function getProducts()
 function putProducts()
 {
     global $URL, $key;
-    $put_products = 'stores/plainsandprints/products/53a8e100696e643e3eeb0200';
-    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-type'=>'application/json');
+    $put_products = '/stores/plainsandprints/products/53b23cd1696e644411000000';
+    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-Type'=>'application/json');
     $values = array(
         'apparent_quantity'=>'0',
-        'description'=>'Test of Maxi Tan (Intern) at GaloreTV',
+        'description'=>'Test of Maxi Tan (Intern) at GaloreTV Part 2',
         'group_name'=>null,
         'name'=>'Edit of Maxi',
-        'price'=>'0.0',
-        'quantity'=>'0',
-        'sku'=>null,
+        'price'=>'500.00',
+        'quantity'=>'1',
+        'sku'=>'111111111111',
         'status'=>'1',
-        'weight'=>'0.0000'
+        'weight'=>'0.0001'
     );
-    $URL = $URL.'/'.$put_products;
+    $URL = $URL.$put_products;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$URL);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
@@ -56,47 +56,16 @@ function putProducts()
 function postProducts(){
     global $URL, $key;
     $post_products = '/stores/plainsandprints/products/';
-    $URL = $URL.'/'.$post_products;
-    $values = array(
-        'apparent_quantity'=> '0',
-        'attribute_set_id'=> '11',
-        'description'=> 'Added Test Product by Max Tan',
-        'enable_googlecheckout'=> '1',
-        'entity_id'=> '909',
-        'fabric'=> '114',
-        'group_name'=> 'null',
-        'msrp_display_actual_price_type'=> '4',
-        'msrp_enabled'=> '2',
-        'name'=> 'WHITE TSHIRT',
-        'options_container'=> 'container2',
-        'pp_color'=> '40',
-        'pp_size'=> '15',
-        'price'=> '1095.0',
-        'quantity'=> '1',
-        'resource_type'=> 'magento',
-        'sku'=> '110800014085',
-        'status'=> '1',
-        'store_id'=> 'mystore',
-        'tax_class_id'=> '2',
-        'type_id'=> 'simple',
-        'url_key'=> 'white-tshirt',
-        'visibility'=> '1',
-        'weight'=> '0.1000'
-    );
-    $values = json_encode($values);
-    print_r($values);
-    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-type'=>'application/json');
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL,$URL);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    $URL = $URL.$post_products;
+    $data = array("sku" => "22222222222222", "name" => "Testing A New POST Method by Maxi Tan");
+    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-Type'=>'application/json', 'Content-Length'=>strlen($data));
+    $ch = curl_init($URL);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-    curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $values);
-    curl_setopt($ch, CURLOPT_POST, TRUE);
     $result=curl_exec ($ch);
-    print_r($result);
+    var_dump($result);
     curl_close ($ch);
 }
 
