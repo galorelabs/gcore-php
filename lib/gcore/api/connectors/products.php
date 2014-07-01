@@ -27,7 +27,7 @@ function getProducts()
 function putProducts()
 {
     global $URL, $key;
-    $put_products = '/stores/plainsandprints/products/53b23cd1696e644411000000';
+    $put_products = '/stores/plainsandprints/products/53b10d03696e64559cf31c00';
     $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-Type'=>'application/json');
     $values = array(
         'apparent_quantity'=>'0',
@@ -68,7 +68,23 @@ function postProducts(){
     var_dump($result);
     curl_close ($ch);
 }
+function deleteProducts(){
+    global $URL, $key;
+    $remove_products = '/stores/plainsandprints/products/53b23cd1696e644411000000';
+    $URL = $URL.$remove_products;
+    $header = array('Accept'=>'application/json', 'Authorization'=>$key, 'Content-Type'=>'application/json');
+    $ch = curl_init($URL);
+    curl_setopt($ch, CURLOPT_URL,$URL);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
+    $result=curl_exec ($ch);
+    var_dump($result);
+    curl_close ($ch);
+}
 
 //RUNNING COMMANDS
-postProducts();
+deleteProducts();
 ?>
