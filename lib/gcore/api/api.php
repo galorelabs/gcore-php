@@ -15,4 +15,8 @@
         global $endpoint;
         return $endpoint;
     }
+    function getHeader()
+    {
+        return $header = array('Accept'=>'application/json', 'Authorization'=>getAuth(), 'Content-Type'=>'application/json');
+    }
 ?>
