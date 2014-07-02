@@ -19,7 +19,7 @@ class SalesOrders extends GCore
             }
             else
             {
-                $www = $URL."/stores/$store_id/sales_orders/?pretty=true";
+                $www = $URL."/stores/$store_id/sales_orders?pretty=true";
                 //Checking for Hash
                 if ($params["page"] != null || $params["limit"] != null)
                 {
@@ -72,4 +72,6 @@ class SalesOrders extends GCore
         }
         print($results);
     }
-}?>
+}
+SalesOrders::show(array("store_id"=> "cudsly"));
+?>
