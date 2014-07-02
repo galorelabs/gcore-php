@@ -102,7 +102,7 @@ class Products
 }
 //RUNNING COMMANDS
 
-//Products::_list();
+//Products::_list(array("store_id" => "plainsandprints"));
 //Products::show(array("id"=>"<id>", "store_id" => "plainsandprints"));
 //Products::create(array("store_id"=> "plainsandprints", "data"=> array("sku"=> "00000000000000", "name"=> "Testing A New POST Method by Maxi Tan")));
 //Products::delete(array("id"=>"<id>", "store_id" => "plainsandprints"));
