@@ -1,23 +1,15 @@
 <?php
-
-    //Declaring Global Variables
-    $api_key = null;
-    $api_secret = null;
-    $endpoint =  "http://qa.api.gcore.galoretv.com";
-
-    function getAuth()
+class GCore
+{
+    public function getURL()
     {
-        global $api_key, $api_secret;
-        return $api_key. ":" . $api_secret;
+        return  "http://qa.api.gcore.galoretv.com";
     }
-    function getURL()
+    protected static function getHeader()
     {
-        global $endpoint;
-        return $endpoint;
-    }
-    function getHeader()
-    {
-        global $api_key, $api_secret;
+        $api_key = null;
+        $api_secret = null;
         return $header = array("Accept: application/json", "Authorization: $api_key:$api_secret", "Content-Type: application/json");
     }
+}
 ?>
