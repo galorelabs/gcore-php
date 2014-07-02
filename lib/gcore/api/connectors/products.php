@@ -5,7 +5,7 @@ include "../api.php";
 
 class Products extends GCore
 {
-    private static function appendURL($params)
+    protected static function appendURL($params)
     {
         $URL = GCore::getURL();
 
@@ -74,4 +74,4 @@ class Products extends GCore
         print($results);
     }
 }
-Products::show(array("store_id"=>"plainsandprints", "id"=>"53b10d03696e64559cf41c00"));
+Products::show(array("store_id"=>"plainsandprints", "id"=>"53a954b1696e6460fd040000"));

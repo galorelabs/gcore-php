@@ -4,7 +4,7 @@ include "../api.php";
 
 class SalesOrders extends GCore
 {
-    private static function appendURL($params)
+    protected static function appendURL($params)
     {
         $URL = GCore::getURL();
 
