@@ -74,4 +74,4 @@ class Products extends GCore
         print($results);
     }
 }
-Products::show(array("store_id"=>"plainsandprints", "id"=>"53a954b1696e6460fd040000"));
+?>
