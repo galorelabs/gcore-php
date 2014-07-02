@@ -44,23 +44,10 @@ class Products
     {
         $id = $params["id"];
         $store_id = $params["store_id"];
-        $values = $params["data"];
+        $values = json_encode($params["data"]);
 
         global $URL, $header;
         $put_products = "/stores/$store_id/products/$id";
-        /*
-         $values = array(
-            'apparent_quantity'=>'0',
-            'description'=>'Test of Maxi Tan (Intern) at GaloreTV Part 2',
-            'group_name'=>null,
-            'name'=>'Edit of Maxi',
-            'price'=>'500.00',
-            'quantity'=>'1',
-            'sku'=>'111111111111',
-            'status'=>'1',
-            'weight'=>'0.0001'
-        );
-        */
         $URL = $URL.$put_products;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$URL);
@@ -79,7 +66,7 @@ class Products
 
         $store_id = $params["store_id"];
         $values = json_encode($params["data"]);
-        echo($values), "\n";
+
         global $URL, $header;
         $post_products = "/stores/$store_id/products/";
         $URL = $URL.$post_products;
@@ -114,11 +101,10 @@ class Products
 
 }
 //RUNNING COMMANDS
-//deleteProducts('53ad4527696e64777e700300'); == ALREADY DELETED
-//putProducts('53a8e100696e643e3eeb0200');
-
 
 //Products::_list();
-//Products::show(array("id"=>'53a8e100696e643e3eeb0200', "store_id" => "plainsandprints"));
-Products::create(array("store_id"=> "plainsandprints", "data"=> array("sku"=> "00000000000000", "name"=> "Testing A New POST Method by Maxi Tan")));
+//Products::show(array("id"=>"<id>", "store_id" => "plainsandprints"));
+//Products::create(array("store_id"=> "plainsandprints", "data"=> array("sku"=> "00000000000000", "name"=> "Testing A New POST Method by Maxi Tan")));
+//Products::delete(array("id"=>"<id>", "store_id" => "plainsandprints"));
+//Products::update(array("id"=>"<id>", "store_id"=> "plainsandprints", "data"=> array("apparent_quantity"=>1, "description"=>"Test of Maxi Tan (Intern) at GaloreTV Part 3", "group_name"=>null, "name"=>"Edit of Maxi", "price"=>"500.00", "quantity"=>"1", "sku"=>"888888888888", "status"=>"1", "weight"=>"0.0001")));
 ?>
