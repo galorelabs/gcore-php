@@ -37,8 +37,8 @@ class GCore
             }
         }
         $result=curl_exec ($ch);
-        echo($result);
         curl_close ($ch);
+        return $result;
     }
     protected static function appendURL($params)
     {
