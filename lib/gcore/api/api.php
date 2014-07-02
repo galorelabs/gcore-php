@@ -17,6 +17,7 @@
     }
     function getHeader()
     {
-        return $header = array('Accept'=>'application/json', 'Authorization'=>getAuth(), 'Content-Type'=>'application/json');
+        global $api_key, $api_secret;
+        return $header = array("Accept: application/json", "Authorization: $api_key:$api_secret", "Content-Type: application/json");
     }
 ?>
